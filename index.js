@@ -6,7 +6,6 @@ const cors = require("cors");
 
 const { connection } = require("./config/db");
 const { UserModel } = require("./models/User.model");
-// const { blogRouter } = require("./routes/blog.Routes");
 const { classifiedRouter } = require("./routes/postClassified.Routes");
 const { browseClassifiedRouter } = require("./routes/browseClassified.Routes");
 const { authentication } = require("./middlewares/authentication");
@@ -45,7 +44,7 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const { email, password } = req.body; //elon@123
+  const { email, password } = req.body;
   const user = await UserModel.findOne({ email });
   if (!user) {
     res.send("Sign up first");
